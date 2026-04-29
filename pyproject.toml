@@ -30,7 +30,9 @@ classifiers = [
   "Topic :: Scientific/Engineering",
   "Typing :: Typed",
 ]
-dependencies = []
+dependencies = [
+  "cattrs>=24.1",
+]
 
 [project.scripts]
 cmake-test-files = "cmake_test_files.cli:main"

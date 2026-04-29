@@ -7,6 +7,9 @@ from dataclasses import dataclass
 from importlib import resources
 from pathlib import PurePosixPath
 
+import cattrs
+from cattrs.errors import BaseValidationError
+
 if typing.TYPE_CHECKING:
     from collections.abc import Collection, Iterator
 
@@ -20,16 +23,6 @@ class CatalogEntry:
     url: str
     description: str
     sha256: str
-
-    @classmethod
-    def from_dict(cls, data: dict[str, object]) -> CatalogEntry:
-        return cls(
-            license=_string_field(data, "license"),
-            path=PurePosixPath(_string_field(data, "path")),
-            url=_string_field(data, "url"),
-            description=_string_field(data, "description"),
-            sha256=_string_field(data, "sha256"),
-        )
 
 
 @dataclass(frozen=True, slots=True)
@@ -82,12 +75,12 @@ def load_catalog() -> Catalog:
         msg = "Catalog entries must be a JSON array"
         raise TypeError(msg)
 
-    entries = tuple(
-        CatalogEntry.from_dict(_entry_dict(entry)) for entry in entries_data
-    )
-    return Catalog(
-        schema_version=_int_field(payload, "schema_version"), entries=entries
-    )
+    try:
+        catalog = _CATALOG_CONVERTER.structure(payload, Catalog)
+    except BaseValidationError as exc:
+        msg = "Catalog payload has invalid structure"
+        raise TypeError(msg) from exc
+    return catalog
 
 
 def catalog_json() -> str:
@@ -98,24 +91,28 @@ def catalog_json() -> str:
     )
 
 
-def _string_field(data: dict[str, object], key: str) -> str:
-    value = data.get(key)
+def _structure_strict_str(value: object, _: type[str]) -> str:
     if not isinstance(value, str):
-        msg = f"Catalog field {key!r} must be a string"
+        msg = "Catalog string fields must contain strings"
         raise TypeError(msg)
     return value
 
 
-def _int_field(data: dict[str, object], key: str) -> int:
-    value = data.get(key)
-    if not isinstance(value, int):
-        msg = f"Catalog field {key!r} must be an integer"
+def _structure_strict_int(value: object, _: type[int]) -> int:
+    if isinstance(value, bool) or not isinstance(value, int):
+        msg = "Catalog integer fields must contain integers"
         raise TypeError(msg)
     return value
 
 
-def _entry_dict(value: object) -> dict[str, object]:
-    if not isinstance(value, dict):
-        msg = "Catalog entries must contain JSON objects"
+def _structure_pure_posix_path(value: object, _: type[PurePosixPath]) -> PurePosixPath:
+    if not isinstance(value, str):
+        msg = "Catalog path fields must contain strings"
         raise TypeError(msg)
-    return value
+    return PurePosixPath(value)
+
+
+_CATALOG_CONVERTER = cattrs.Converter()
+_CATALOG_CONVERTER.register_structure_hook(str, _structure_strict_str)
+_CATALOG_CONVERTER.register_structure_hook(int, _structure_strict_int)
+_CATALOG_CONVERTER.register_structure_hook(PurePosixPath, _structure_pure_posix_path)
