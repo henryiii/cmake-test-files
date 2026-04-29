@@ -3,30 +3,11 @@
 [![Actions Status][actions-badge]][actions-link]
 [![Documentation Status][rtd-badge]][rtd-link]
 
-[![PyPI version][pypi-version]][pypi-link]
-[![Conda-Forge][conda-badge]][conda-link]
-[![PyPI platforms][pypi-platforms]][pypi-link]
-
-[![GitHub Discussion][github-discussions-badge]][github-discussions-link]
-
-[![Coverage][coverage-badge]][coverage-link]
-
 <!-- SPHINX-START -->
 
 <!-- prettier-ignore-start -->
-[actions-badge]:            https://github.com/scikit-build/cmake-test-files/actions/workflows/ci.yml/badge.svg
-[actions-link]:             https://github.com/scikit-build/cmake-test-files/actions
-[conda-badge]:              https://img.shields.io/conda/vn/conda-forge/cmake-test-files
-[conda-link]:               https://github.com/conda-forge/cmake-test-files-feedstock
-[github-discussions-badge]: https://img.shields.io/static/v1?label=Discussions&message=Ask&color=blue&logo=github
-[github-discussions-link]:  https://github.com/scikit-build/cmake-test-files/discussions
-[pypi-link]:                https://pypi.org/project/cmake-test-files/
-[pypi-platforms]:           https://img.shields.io/pypi/pyversions/cmake-test-files
-[pypi-version]:             https://img.shields.io/pypi/v/cmake-test-files
-[rtd-badge]:                https://readthedocs.org/projects/cmake-test-files/badge/?version=latest
-[rtd-link]:                 https://cmake-test-files.readthedocs.io/en/latest/?badge=latest
-[coverage-badge]:           https://codecov.io/github/scikit-build/cmake-test-files/branch/main/graph/badge.svg
-[coverage-link]:            https://codecov.io/github/scikit-build/cmake-test-files
+[actions-badge]:            https://github.com/henryiii/cmake-test-files/actions/workflows/ci.yml/badge.svg
+[actions-link]:             https://github.com/henryiii/cmake-test-files/actions
 
 <!-- prettier-ignore-end -->
 
@@ -35,8 +16,8 @@
 small downloader for materializing that catalog locally. Entries are grouped by
 license so a parser test suite can target only the files you want to consume.
 
-The starter catalog now includes 33 project entries covering 66 files across
-several license groups, with examples from projects such as Abseil, benchmark,
+The catalog now includes 33 project entries covering 66 files across several
+license groups, with examples from projects such as Abseil, benchmark,
 Boost.JSON, Boost.Nowide, Catch2, CLI11, cereal, cxxopts, EnTT, FlatBuffers,
 folly, fmt, googletest, magic_enum, nanobind, nlohmann/json, OpenTelemetry C++,
 protobuf, pybind11, pybind's `cmake_example`, range-v3, spdlog, thrift, xtensor,
@@ -71,9 +52,10 @@ schema:
 }
 ```
 
-The downloader only requires each file's `path`, `url`, and `sha256`, so you can
-move `url` from raw GitHub files to GitHub release assets later without changing
-the Python API.
+The downloader only requires each file's `path`, `url`, and `sha256`.
+
+Install this from the github repo directly (it's mostly for using to set up
+tests).
 
 ## CLI
 

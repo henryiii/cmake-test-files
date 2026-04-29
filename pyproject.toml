@@ -29,6 +29,7 @@ classifiers = [
   "Programming Language :: Python :: 3.14",
   "Topic :: Scientific/Engineering",
   "Typing :: Typed",
+  "Private :: Do Not Upload",
 ]
 dependencies = [
   "cattrs>=24.1",
@@ -38,10 +39,10 @@ dependencies = [
 cmake-test-files = "cmake_test_files.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/scikit-build/cmake-test-files"
-"Bug Tracker" = "https://github.com/scikit-build/cmake-test-files/issues"
-Discussions = "https://github.com/scikit-build/cmake-test-files/discussions"
-Changelog = "https://github.com/scikit-build/cmake-test-files/releases"
+Homepage = "https://github.com/henryiiii/cmake-test-files"
+"Bug Tracker" = "https://github.com/henryiiii/cmake-test-files/issues"
+Discussions = "https://github.com/henryiiii/cmake-test-files/discussions"
+Changelog = "https://github.com/henryiiii/cmake-test-files/releases"
 
 
 [dependency-groups]
@@ -52,14 +53,6 @@ test = [
 dev = [
   { include-group = "test" },
 ]
-docs = [
-  "sphinx>=7.0",
-  "myst_parser>=0.13",
-  "sphinx_copybutton",
-  "sphinx_autodoc_typehints",
-  "furo>=2023.08.17",
-]
-
 
 [tool.pytest]
 minversion = "9.0"
