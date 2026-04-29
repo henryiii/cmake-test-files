@@ -15,13 +15,11 @@ if typing.TYPE_CHECKING:
 
 
 @dataclass(frozen=True, slots=True)
-class CatalogEntry:
-    """A single downloadable CMake file in the packaged catalog."""
+class CatalogFile:
+    """A single downloadable file within a catalog entry."""
 
-    license: str
     path: PurePosixPath
     url: str
-    description: str
     sha256: str
 
 
@@ -56,7 +54,23 @@ class Catalog:
         self, licenses: Collection[str] | None = None
     ) -> Iterator[PurePosixPath]:
         for entry in self.filter(licenses):
-            yield entry.path
+            for file in entry.files:
+                yield file.path
+
+    def iter_files(
+        self, licenses: Collection[str] | None = None
+    ) -> Iterator[CatalogFile]:
+        for entry in self.filter(licenses):
+            yield from entry.files
+
+
+@dataclass(frozen=True, slots=True)
+class CatalogEntry:
+    """A downloadable project entry in the packaged catalog."""
+
+    license: str
+    description: str
+    files: tuple[CatalogFile, ...]
 
 
 def load_catalog() -> Catalog:

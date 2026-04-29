@@ -7,7 +7,7 @@ import urllib.request
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 
-from .catalog import CatalogEntry, load_catalog
+from .catalog import CatalogEntry, CatalogFile, load_catalog
 
 if typing.TYPE_CHECKING:
     from collections.abc import Collection, Iterable
@@ -35,23 +35,23 @@ def download_files(
 
     downloaded: list[Path] = []
     skipped: list[Path] = []
-    for entry in selected_entries:
-        relative_path = _safe_relative_path(entry.path)
+    for file in _iter_files(selected_entries):
+        relative_path = _safe_relative_path(file.path)
         output_path = target_root / relative_path
         output_path.parent.mkdir(parents=True, exist_ok=True)
 
         if output_path.exists() and not overwrite:
-            if _matches_existing_file(output_path, entry):
+            if _matches_existing_file(output_path, file):
                 skipped.append(output_path)
                 continue
 
             msg = (
                 f"Refusing to overwrite {output_path} because it does not match "
-                f"the catalog entry for {entry.path.as_posix()!r}"
+                f"the catalog entry for {file.path.as_posix()!r}"
             )
             raise FileExistsError(msg)
 
-        data = _download_entry(entry)
+        data = _download_entry(file)
         _write_file(output_path, data)
         downloaded.append(output_path)
 
@@ -65,7 +65,12 @@ def _safe_relative_path(path: PurePosixPath) -> Path:
     return Path(*path.parts)
 
 
-def _download_entry(entry: CatalogEntry) -> bytes:
+def _iter_files(entries: Iterable[CatalogEntry]) -> Iterable[CatalogFile]:
+    for entry in entries:
+        yield from entry.files
+
+
+def _download_entry(entry: CatalogFile) -> bytes:
     request = urllib.request.Request(
         entry.url,
         headers={"User-Agent": "cmake-test-files/0.1.0"},
@@ -87,7 +92,7 @@ def _download_entry(entry: CatalogEntry) -> bytes:
     return data
 
 
-def _matches_existing_file(path: Path, entry: CatalogEntry) -> bool:
+def _matches_existing_file(path: Path, entry: CatalogFile) -> bool:
     data = path.read_bytes()
     return hashlib.sha256(data).hexdigest() == entry.sha256
 

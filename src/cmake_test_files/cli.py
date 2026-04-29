@@ -76,10 +76,15 @@ def _run_list(catalog: Catalog, *, licenses: list[str] | None, as_json: bool) ->
         payload = [
             {
                 "license": entry.license,
-                "path": entry.path.as_posix(),
-                "url": entry.url,
                 "description": entry.description,
-                "sha256": entry.sha256,
+                "files": [
+                    {
+                        "path": file.path.as_posix(),
+                        "url": file.url,
+                        "sha256": file.sha256,
+                    }
+                    for file in entry.files
+                ],
             }
             for entry in entries
         ]
@@ -87,7 +92,8 @@ def _run_list(catalog: Catalog, *, licenses: list[str] | None, as_json: bool) ->
         return 0
 
     for entry in entries:
-        sys.stdout.write(f"{entry.license}\t{entry.path.as_posix()}\t{entry.url}\n")
+        paths = ", ".join(file.path.as_posix() for file in entry.files)
+        sys.stdout.write(f"{entry.license}\t{paths}\n")
     return 0
 
 

@@ -31,15 +31,16 @@
 <!-- prettier-ignore-end -->
 
 `cmake-test-files` packages a curated JSON catalog of real-world
-`CMakeLists.txt` files and provides a small downloader for materializing that
-catalog locally. Entries are grouped by license so a parser test suite can
-target only the files you want to consume.
+`CMakeLists.txt` files together with their matching license files and provides a
+small downloader for materializing that catalog locally. Entries are grouped by
+license so a parser test suite can target only the files you want to consume.
 
-The starter catalog now includes 33 files across several license groups, with
-examples from projects such as Abseil, benchmark, Boost.JSON, Boost.Nowide,
-Catch2, CLI11, cereal, cxxopts, EnTT, FlatBuffers, folly, fmt, googletest,
-magic_enum, nanobind, nlohmann/json, OpenTelemetry C++, protobuf, pybind11,
-pybind's `cmake_example`, range-v3, spdlog, thrift, xtensor, xtl, and yaml-cpp.
+The starter catalog now includes 33 project entries covering 66 files across
+several license groups, with examples from projects such as Abseil, benchmark,
+Boost.JSON, Boost.Nowide, Catch2, CLI11, cereal, cxxopts, EnTT, FlatBuffers,
+folly, fmt, googletest, magic_enum, nanobind, nlohmann/json, OpenTelemetry C++,
+protobuf, pybind11, pybind's `cmake_example`, range-v3, spdlog, thrift, xtensor,
+xtl, and yaml-cpp.
 
 ## Catalog format
 
@@ -48,22 +49,31 @@ schema:
 
 ```json
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "entries": [
     {
       "license": "MIT",
-      "path": "MIT/nlohmann/json/CMakeLists.txt",
-      "url": "https://raw.githubusercontent.com/owner/repo/<commit>/CMakeLists.txt",
       "description": "Feature-rich top-level configuration for a header-only project.",
-      "sha256": "<sha256>"
+      "files": [
+        {
+          "path": "MIT/nlohmann/json/CMakeLists.txt",
+          "url": "https://raw.githubusercontent.com/owner/repo/<commit>/CMakeLists.txt",
+          "sha256": "<sha256>"
+        },
+        {
+          "path": "MIT/nlohmann/json/LICENSE.MIT",
+          "url": "https://raw.githubusercontent.com/owner/repo/<commit>/LICENSE.MIT",
+          "sha256": "<sha256>"
+        }
+      ]
     }
   ]
 }
 ```
 
-The downloader only requires `path`, `url`, and `sha256`, so you can move `url`
-from raw GitHub files to GitHub release assets later without changing the Python
-API.
+The downloader only requires each file's `path`, `url`, and `sha256`, so you can
+move `url` from raw GitHub files to GitHub release assets later without changing
+the Python API.
 
 ## CLI
 
