@@ -189,6 +189,48 @@
       "url": "https://raw.githubusercontent.com/skypjack/entt/1333fa53129e7cfded5a9640c4336a254049917b/CMakeLists.txt",
       "description": "Entity-component-system project configuration with benchmarks, tests, examples, and export logic.",
       "sha256": "018b6e628a8ee3e3015f9e8310146c302914ea9def6396907ba18ac858d57587"
+    },
+    {
+      "license": "Zlib",
+      "path": "Zlib/zlib-ng/zlib-ng/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/zlib-ng/zlib-ng/509c0d16af3a387961505e122ec3c75d518dcdb2/CMakeLists.txt",
+      "description": "zlib-compatible compression library configured for modern architectures with SIMD and feature toggles.",
+      "sha256": "6b568d6db7b7c1d5f1c001b0a04d1f410ff9c73daa6e7e1175b2db89aa5dd3fd"
+    },
+    {
+      "license": "BSD-3-Clause",
+      "path": "BSD-3-Clause/libjpeg-turbo/libjpeg-turbo/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/libjpeg-turbo/libjpeg-turbo/ed00e0f4b39291e954958b96a8d941ca4a9e03a2/CMakeLists.txt",
+      "description": "High-performance JPEG compression library build with SIMD, shared/static toggles, and packaging.",
+      "sha256": "0b7e82529fa55fda4630bcded954ef8dee2a7ed0ad876ec9940943a905ccfc42"
+    },
+    {
+      "license": "MIT",
+      "path": "MIT/libuv/libuv/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/libuv/libuv/fa0ac9ec0cb262ed13082ce30d6b9b88fa339119/CMakeLists.txt",
+      "description": "Cross-platform asynchronous I/O library configuration with tests, benchmarks, and dependency setup.",
+      "sha256": "b4d9392cf50575aacf61560cf2f10630c9cb3063db41719350e44965e151e674"
+    },
+    {
+      "license": "MPL-2.0",
+      "path": "MPL-2.0/zeromq/libzmq/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/zeromq/libzmq/b946c18f676760387276cd095bbdd8c0e18c09bf/CMakeLists.txt",
+      "description": "ZeroMQ messaging library build with feature toggles, protocol backends, tests, and packaging.",
+      "sha256": "0fc60b9d458d177d0b026a3ad885302860b677ceb2f80d1759ce172de3c3e04d"
+    },
+    {
+      "license": "MIT",
+      "path": "MIT/c-ares/c-ares/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/c-ares/c-ares/263b37909807df140876c7895defabdeae81e7b9/CMakeLists.txt",
+      "description": "Asynchronous DNS request library configuration with feature probes, tests, and install/export logic.",
+      "sha256": "a83cd9d73afadc565a8ee7ca3ac4423d6a2230ac761fb31d9575c5e35ddbf582"
+    },
+    {
+      "license": "Apache-2.0",
+      "path": "Apache-2.0/oneapi-src/oneTBB/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/oneapi-src/oneTBB/f918c9c99d83594f5ec2ae8cb1f59c668d5897a8/CMakeLists.txt",
+      "description": "Intel Threading Building Blocks configuration with modular build targets and packaging support.",
+      "sha256": "63ac30c8a9efaca8e58f95a593e8fa0d87aee195b9b0e1a55c5eec25186301ae"
     }
   ]
 }

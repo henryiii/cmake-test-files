@@ -15,8 +15,15 @@ def test_load_catalog() -> None:
     catalog = load_catalog()
 
     assert catalog.schema_version == 1
-    assert len(catalog.entries) == 27
-    assert catalog.licenses() == ("Apache-2.0", "BSD-3-Clause", "BSL-1.0", "MIT")
+    assert len(catalog.entries) == 33
+    assert catalog.licenses() == (
+        "Apache-2.0",
+        "BSD-3-Clause",
+        "BSL-1.0",
+        "MIT",
+        "MPL-2.0",
+        "Zlib",
+    )
 
 
 def test_catalog_filter_is_case_insensitive() -> None:
@@ -33,6 +40,8 @@ def test_catalog_filter_is_case_insensitive() -> None:
         "MIT/jbeder/yaml-cpp/CMakeLists.txt",
         "MIT/jarro2783/cxxopts/CMakeLists.txt",
         "MIT/skypjack/entt/CMakeLists.txt",
+        "MIT/libuv/libuv/CMakeLists.txt",
+        "MIT/c-ares/c-ares/CMakeLists.txt",
     ]
 
 
