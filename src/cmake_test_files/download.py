@@ -47,7 +47,7 @@ def download_files(
 
             msg = (
                 f"Refusing to overwrite {output_path} because it does not match "
-                f"the catalog entry {entry.id!r}"
+                f"the catalog entry for {entry.path.as_posix()!r}"
             )
             raise FileExistsError(msg)
 
@@ -73,16 +73,15 @@ def _download_entry(entry: CatalogEntry) -> bytes:
     with urllib.request.urlopen(request) as response:
         data = response.read()
     if not isinstance(data, bytes):
-        msg = f"Expected a bytes payload for {entry.id!r}"
+        msg = f"Expected a bytes payload for {entry.path.as_posix()!r}"
         raise TypeError(msg)
-
-    if len(data) != entry.size:
-        msg = f"Downloaded size for {entry.id!r} was {len(data)}, expected {entry.size}"
-        raise ValueError(msg)
 
     digest = hashlib.sha256(data).hexdigest()
     if digest != entry.sha256:
-        msg = f"SHA256 mismatch for {entry.id!r}: expected {entry.sha256}, got {digest}"
+        msg = (
+            f"SHA256 mismatch for {entry.path.as_posix()!r}: "
+            f"expected {entry.sha256}, got {digest}"
+        )
         raise ValueError(msg)
 
     return data
@@ -90,7 +89,7 @@ def _download_entry(entry: CatalogEntry) -> bytes:
 
 def _matches_existing_file(path: Path, entry: CatalogEntry) -> bool:
     data = path.read_bytes()
-    return len(data) == entry.size and hashlib.sha256(data).hexdigest() == entry.sha256
+    return hashlib.sha256(data).hexdigest() == entry.sha256
 
 
 def _write_file(path: Path, data: bytes) -> None:

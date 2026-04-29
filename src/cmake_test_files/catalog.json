@@ -2,191 +2,123 @@
   "schema_version": 1,
   "entries": [
     {
-      "id": "abseil-top-level",
       "license": "Apache-2.0",
       "path": "Apache-2.0/abseil/abseil-cpp/CMakeLists.txt",
       "url": "https://raw.githubusercontent.com/abseil/abseil-cpp/e7ba8a7852611819ac42114ef7f22e470ebf7aa2/CMakeLists.txt",
-      "source_url": "https://github.com/abseil/abseil-cpp/blob/e7ba8a7852611819ac42114ef7f22e470ebf7aa2/CMakeLists.txt",
-      "source_repository": "https://github.com/abseil/abseil-cpp",
       "description": "Large production CMakeLists.txt with testing, install rules, and options.",
-      "sha256": "134cad0f7a171c705c3c05175397ed9032608aa6e069718ba3a26b600fc5fa6f",
-      "size": 10296
+      "sha256": "134cad0f7a171c705c3c05175397ed9032608aa6e069718ba3a26b600fc5fa6f"
     },
     {
-      "id": "benchmark-top-level",
       "license": "Apache-2.0",
       "path": "Apache-2.0/google/benchmark/CMakeLists.txt",
       "url": "https://raw.githubusercontent.com/google/benchmark/ff773f8c97717424a7855ce0933b036b79628a02/CMakeLists.txt",
-      "source_url": "https://github.com/google/benchmark/blob/ff773f8c97717424a7855ce0933b036b79628a02/CMakeLists.txt",
-      "source_repository": "https://github.com/google/benchmark",
       "description": "Benchmark library configuration with options, dependency handling, and install logic.",
-      "sha256": "ec7cc1b874d9593d58aa2bd559ec6e46d5838d1cdc74612586d6afe3a28a0070",
-      "size": 14856
+      "sha256": "ec7cc1b874d9593d58aa2bd559ec6e46d5838d1cdc74612586d6afe3a28a0070"
     },
     {
-      "id": "opentelemetry-cpp-top-level",
       "license": "Apache-2.0",
       "path": "Apache-2.0/open-telemetry/opentelemetry-cpp/CMakeLists.txt",
       "url": "https://raw.githubusercontent.com/open-telemetry/opentelemetry-cpp/3d4c389ef290a97e63a41b31f5e2eb20de30c4d1/CMakeLists.txt",
-      "source_url": "https://github.com/open-telemetry/opentelemetry-cpp/blob/3d4c389ef290a97e63a41b31f5e2eb20de30c4d1/CMakeLists.txt",
-      "source_repository": "https://github.com/open-telemetry/opentelemetry-cpp",
       "description": "Large observability project configuration with many options, feature gates, and subprojects.",
-      "sha256": "5c9d014c31bf6b19c20c743380e127f2ca4608f7d1398234afaed3d3cc5f424c",
-      "size": 21437
+      "sha256": "5c9d014c31bf6b19c20c743380e127f2ca4608f7d1398234afaed3d3cc5f424c"
     },
     {
-      "id": "protobuf-top-level",
       "license": "Apache-2.0",
       "path": "Apache-2.0/protocolbuffers/protobuf/CMakeLists.txt",
       "url": "https://raw.githubusercontent.com/protocolbuffers/protobuf/e6ee74af8783298f9571aa21d889f218bd65ec0a/CMakeLists.txt",
-      "source_url": "https://github.com/protocolbuffers/protobuf/blob/e6ee74af8783298f9571aa21d889f218bd65ec0a/CMakeLists.txt",
-      "source_repository": "https://github.com/protocolbuffers/protobuf",
       "description": "Production build configuration covering options, language support, tests, and installation.",
-      "sha256": "b1fa9ff7f3aa35655f1f341dd7f8ec10fd21d9993a49bd2ced149ecf9c43c025",
-      "size": 13357
+      "sha256": "b1fa9ff7f3aa35655f1f341dd7f8ec10fd21d9993a49bd2ced149ecf9c43c025"
     },
     {
-      "id": "catch2-top-level",
       "license": "BSL-1.0",
       "path": "BSL-1.0/catchorg/Catch2/CMakeLists.txt",
       "url": "https://raw.githubusercontent.com/catchorg/Catch2/b670de4fe12ac7c5e858b7de3a14fb4bd18c760e/CMakeLists.txt",
-      "source_url": "https://github.com/catchorg/Catch2/blob/b670de4fe12ac7c5e858b7de3a14fb4bd18c760e/CMakeLists.txt",
-      "source_repository": "https://github.com/catchorg/Catch2",
       "description": "Modern test framework setup with options, helpers, and install/export logic.",
-      "sha256": "42cf0c16e54792b9cecb6babbb81dd32c10582f41a648e2ba3540a0c6f233a98",
-      "size": 8392
+      "sha256": "42cf0c16e54792b9cecb6babbb81dd32c10582f41a648e2ba3540a0c6f233a98"
     },
     {
-      "id": "range-v3-top-level",
       "license": "BSL-1.0",
       "path": "BSL-1.0/ericniebler/range-v3/CMakeLists.txt",
       "url": "https://raw.githubusercontent.com/ericniebler/range-v3/21b70bee785cabd3ca5e3da173bf3bdbb9df1344/CMakeLists.txt",
-      "source_url": "https://github.com/ericniebler/range-v3/blob/21b70bee785cabd3ca5e3da173bf3bdbb9df1344/CMakeLists.txt",
-      "source_repository": "https://github.com/ericniebler/range-v3",
       "description": "Header-only library setup with tests, docs, and conditional install behavior.",
-      "sha256": "3bafdee484f99462badd2fb2dc9f1a19bfa649517270b6379357ffd6619fb907",
-      "size": 8218
+      "sha256": "3bafdee484f99462badd2fb2dc9f1a19bfa649517270b6379357ffd6619fb907"
     },
     {
-      "id": "cli11-top-level",
       "license": "BSD-3-Clause",
       "path": "BSD-3-Clause/CLIUtils/CLI11/CMakeLists.txt",
       "url": "https://raw.githubusercontent.com/CLIUtils/CLI11/bf5a16a26a34a9a7ad75f4a7705585e44675fef0/CMakeLists.txt",
-      "source_url": "https://github.com/CLIUtils/CLI11/blob/bf5a16a26a34a9a7ad75f4a7705585e44675fef0/CMakeLists.txt",
-      "source_repository": "https://github.com/CLIUtils/CLI11",
       "description": "Command-line parser project file with configurable examples, tests, docs, and packaging.",
-      "sha256": "ba6de200c73a9bed3ea032381f3dd024813ffe0c065e25e53a1b311ec92309c8",
-      "size": 8948
+      "sha256": "ba6de200c73a9bed3ea032381f3dd024813ffe0c065e25e53a1b311ec92309c8"
     },
     {
-      "id": "pybind-cmake-example",
       "license": "BSD-3-Clause",
       "path": "BSD-3-Clause/pybind/cmake_example/CMakeLists.txt",
       "url": "https://raw.githubusercontent.com/pybind/cmake_example/2440893c60ed2578fb127dc16e6b348fa0be92c1/CMakeLists.txt",
-      "source_url": "https://github.com/pybind/cmake_example/blob/2440893c60ed2578fb127dc16e6b348fa0be92c1/CMakeLists.txt",
-      "source_repository": "https://github.com/pybind/cmake_example",
       "description": "Minimal pybind11 extension example with a small top-level CMakeLists.txt.",
-      "sha256": "0e83ac27dcda44eda75d950d64f0b27148d9b37fd546478572d48894f4d22bd0",
-      "size": 367
+      "sha256": "0e83ac27dcda44eda75d950d64f0b27148d9b37fd546478572d48894f4d22bd0"
     },
     {
-      "id": "googletest-top-level",
       "license": "BSD-3-Clause",
       "path": "BSD-3-Clause/google/googletest/CMakeLists.txt",
       "url": "https://raw.githubusercontent.com/google/googletest/a866428a78ab02b7072f96c8de15802ffd451a7f/CMakeLists.txt",
-      "source_url": "https://github.com/google/googletest/blob/a866428a78ab02b7072f96c8de15802ffd451a7f/CMakeLists.txt",
-      "source_repository": "https://github.com/google/googletest",
       "description": "Widely used test framework configuration with options, install rules, and subdirectories.",
-      "sha256": "62e3c7a967a01c0b1a37b1193538caae1d40d7553e7249a43a75d7afedfcf0c4",
-      "size": 986
+      "sha256": "62e3c7a967a01c0b1a37b1193538caae1d40d7553e7249a43a75d7afedfcf0c4"
     },
     {
-      "id": "nanobind-top-level",
       "license": "BSD-3-Clause",
       "path": "BSD-3-Clause/wjakob/nanobind/CMakeLists.txt",
       "url": "https://raw.githubusercontent.com/wjakob/nanobind/b50c3d80bab4f16ee57d680cab113925a7284880/CMakeLists.txt",
-      "source_url": "https://github.com/wjakob/nanobind/blob/b50c3d80bab4f16ee57d680cab113925a7284880/CMakeLists.txt",
-      "source_repository": "https://github.com/wjakob/nanobind",
       "description": "Python binding project with compact top-level configuration and subdirectory orchestration.",
-      "sha256": "e4f5a82f2a4e2b6fcc11ace8981fab77a10e4daad34bb8b01386cad9dc0e63c7",
-      "size": 6270
+      "sha256": "e4f5a82f2a4e2b6fcc11ace8981fab77a10e4daad34bb8b01386cad9dc0e63c7"
     },
     {
-      "id": "pybind11-top-level",
       "license": "BSD-3-Clause",
       "path": "BSD-3-Clause/pybind/pybind11/CMakeLists.txt",
       "url": "https://raw.githubusercontent.com/pybind/pybind11/ccb7129f54fcef8db14c7e662cec4ae98ad13541/CMakeLists.txt",
-      "source_url": "https://github.com/pybind/pybind11/blob/ccb7129f54fcef8db14c7e662cec4ae98ad13541/CMakeLists.txt",
-      "source_repository": "https://github.com/pybind/pybind11",
       "description": "Popular binding library configuration with helpers, tests, install rules, and compatibility logic.",
-      "sha256": "0710a2aa117ffa4ad0f01693c8b75f696c23b0684b3d05072366b89c4927b085",
-      "size": 16420
+      "sha256": "0710a2aa117ffa4ad0f01693c8b75f696c23b0684b3d05072366b89c4927b085"
     },
     {
-      "id": "doctest-top-level",
       "license": "MIT",
       "path": "MIT/doctest/doctest/CMakeLists.txt",
       "url": "https://raw.githubusercontent.com/doctest/doctest/c2717dc9bd21b6cfa0a5aa2b8d08484ed150be58/CMakeLists.txt",
-      "source_url": "https://github.com/doctest/doctest/blob/c2717dc9bd21b6cfa0a5aa2b8d08484ed150be58/CMakeLists.txt",
-      "source_repository": "https://github.com/doctest/doctest",
       "description": "Relatively small test framework configuration with toggles for tests, docs, and installation.",
-      "sha256": "0e916bb765aad32e26ad9d7a99e122414ecfc650832ab17b291f02591bbb4e8c",
-      "size": 7711
+      "sha256": "0e916bb765aad32e26ad9d7a99e122414ecfc650832ab17b291f02591bbb4e8c"
     },
     {
-      "id": "nlohmann-json-top-level",
       "license": "MIT",
       "path": "MIT/nlohmann/json/CMakeLists.txt",
       "url": "https://raw.githubusercontent.com/nlohmann/json/b7f741165b224fb798c3702e1975a005c2d8f489/CMakeLists.txt",
-      "source_url": "https://github.com/nlohmann/json/blob/b7f741165b224fb798c3702e1975a005c2d8f489/CMakeLists.txt",
-      "source_repository": "https://github.com/nlohmann/json",
       "description": "Feature-rich top-level configuration for a header-only project.",
-      "sha256": "2fe5d9852d1849577370087c3cb1f869e10cf1954cf55934760a66a5792d3c1c",
-      "size": 8321
+      "sha256": "2fe5d9852d1849577370087c3cb1f869e10cf1954cf55934760a66a5792d3c1c"
     },
     {
-      "id": "fmt-top-level",
       "license": "MIT",
       "path": "MIT/fmtlib/fmt/CMakeLists.txt",
       "url": "https://raw.githubusercontent.com/fmtlib/fmt/879463ecad453b33c914eead826535429319764b/CMakeLists.txt",
-      "source_url": "https://github.com/fmtlib/fmt/blob/879463ecad453b33c914eead826535429319764b/CMakeLists.txt",
-      "source_repository": "https://github.com/fmtlib/fmt",
       "description": "Large top-level project file with compiler probes, install packaging, and optional module support.",
-      "sha256": "35f34c9ccedeb9b7e136793a513a9a9119149bff8f37a97c1db1a8e5101cb0cd",
-      "size": 19675
+      "sha256": "35f34c9ccedeb9b7e136793a513a9a9119149bff8f37a97c1db1a8e5101cb0cd"
     },
     {
-      "id": "magic-enum-top-level",
       "license": "MIT",
       "path": "MIT/Neargye/magic_enum/CMakeLists.txt",
       "url": "https://raw.githubusercontent.com/Neargye/magic_enum/1a1824df7ac798177a521eed952720681b0bf482/CMakeLists.txt",
-      "source_url": "https://github.com/Neargye/magic_enum/blob/1a1824df7ac798177a521eed952720681b0bf482/CMakeLists.txt",
-      "source_repository": "https://github.com/Neargye/magic_enum",
       "description": "Small header-only project configuration using feature toggles and install/export helpers.",
-      "sha256": "d5ea9bd147d9e21168897a02c507510f6002b05b8b30592ea2fb5a53cdb57158",
-      "size": 5223
+      "sha256": "d5ea9bd147d9e21168897a02c507510f6002b05b8b30592ea2fb5a53cdb57158"
     },
     {
-      "id": "spdlog-top-level",
       "license": "MIT",
       "path": "MIT/gabime/spdlog/CMakeLists.txt",
       "url": "https://raw.githubusercontent.com/gabime/spdlog/75e93f4bdda64fb1ee8e8486df73af9430669ca2/CMakeLists.txt",
-      "source_url": "https://github.com/gabime/spdlog/blob/75e93f4bdda64fb1ee8e8486df73af9430669ca2/CMakeLists.txt",
-      "source_repository": "https://github.com/gabime/spdlog",
       "description": "Logging library build with many options, external dependencies, and packaging support.",
-      "sha256": "e00978913cddb0b02ca49e6facd2867567f2ed31ad45f0cdcc1328fc3d56ebaa",
-      "size": 18536
+      "sha256": "e00978913cddb0b02ca49e6facd2867567f2ed31ad45f0cdcc1328fc3d56ebaa"
     },
     {
-      "id": "yaml-cpp-top-level",
       "license": "MIT",
       "path": "MIT/jbeder/yaml-cpp/CMakeLists.txt",
       "url": "https://raw.githubusercontent.com/jbeder/yaml-cpp/1b60fae7c31e34380923fd0efb99b461114ddd3d/CMakeLists.txt",
-      "source_url": "https://github.com/jbeder/yaml-cpp/blob/1b60fae7c31e34380923fd0efb99b461114ddd3d/CMakeLists.txt",
-      "source_repository": "https://github.com/jbeder/yaml-cpp",
       "description": "Mid-sized library configuration with strict flags, tests, tools, and install/export behavior.",
-      "sha256": "ba47469fd332f396f85ec17e6513723a6237a10ac68114cde26935816dab64a7",
-      "size": 6567
+      "sha256": "ba47469fd332f396f85ec17e6513723a6237a10ac68114cde26935816dab64a7"
     }
   ]
 }

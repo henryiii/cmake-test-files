@@ -50,23 +50,19 @@ schema:
   "schema_version": 1,
   "entries": [
     {
-      "id": "nlohmann-json-top-level",
       "license": "MIT",
       "path": "MIT/nlohmann/json/CMakeLists.txt",
       "url": "https://raw.githubusercontent.com/owner/repo/<commit>/CMakeLists.txt",
-      "source_url": "https://github.com/owner/repo/blob/<commit>/CMakeLists.txt",
-      "source_repository": "https://github.com/owner/repo",
       "description": "Feature-rich top-level configuration for a header-only project.",
-      "sha256": "<sha256>",
-      "size": 8321
+      "sha256": "<sha256>"
     }
   ]
 }
 ```
 
-The downloader only requires `path`, `url`, `sha256`, and `size`, so you can
-move `url` from raw GitHub files to GitHub release assets later without changing
-the Python API.
+The downloader only requires `path`, `url`, and `sha256`, so you can move `url`
+from raw GitHub files to GitHub release assets later without changing the Python
+API.
 
 ## CLI
 

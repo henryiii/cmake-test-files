@@ -23,27 +23,23 @@ def test_catalog_filter_is_case_insensitive() -> None:
 
     entries = catalog.filter(["mit"])
 
-    assert [entry.id for entry in entries] == [
-        "doctest-top-level",
-        "nlohmann-json-top-level",
-        "fmt-top-level",
-        "magic-enum-top-level",
-        "spdlog-top-level",
-        "yaml-cpp-top-level",
+    assert [entry.path.as_posix() for entry in entries] == [
+        "MIT/doctest/doctest/CMakeLists.txt",
+        "MIT/nlohmann/json/CMakeLists.txt",
+        "MIT/fmtlib/fmt/CMakeLists.txt",
+        "MIT/Neargye/magic_enum/CMakeLists.txt",
+        "MIT/gabime/spdlog/CMakeLists.txt",
+        "MIT/jbeder/yaml-cpp/CMakeLists.txt",
     ]
 
 
 def test_download_files(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     entry = CatalogEntry(
-        id="example",
         license="MIT",
         path=PurePosixPath("MIT/example/CMakeLists.txt"),
         url="https://example.invalid/CMakeLists.txt",
-        source_url="https://example.invalid/source",
-        source_repository="https://example.invalid/repo",
         description="Example file",
         sha256="022d843e9eb900dbf96b549eb873ca183d1a46c8f9e8b51e7b132df74b37b074",
-        size=14,
     )
     catalog = Catalog(schema_version=1, entries=(entry,))
 
@@ -67,15 +63,11 @@ def test_download_files(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None
 
 def test_download_files_rejects_path_escape(tmp_path: Path) -> None:
     entry = CatalogEntry(
-        id="bad-path",
         license="MIT",
         path=PurePosixPath("../escape.txt"),
         url="https://example.invalid/escape.txt",
-        source_url="https://example.invalid/source",
-        source_repository="https://example.invalid/repo",
         description="Bad path",
         sha256="0" * 64,
-        size=0,
     )
 
     with pytest.raises(ValueError, match="stay within the destination"):

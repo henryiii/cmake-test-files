@@ -75,15 +75,11 @@ def _run_list(catalog: Catalog, *, licenses: list[str] | None, as_json: bool) ->
     if as_json:
         payload = [
             {
-                "id": entry.id,
                 "license": entry.license,
                 "path": entry.path.as_posix(),
                 "url": entry.url,
-                "source_url": entry.source_url,
-                "source_repository": entry.source_repository,
                 "description": entry.description,
                 "sha256": entry.sha256,
-                "size": entry.size,
             }
             for entry in entries
         ]
@@ -91,9 +87,7 @@ def _run_list(catalog: Catalog, *, licenses: list[str] | None, as_json: bool) ->
         return 0
 
     for entry in entries:
-        sys.stdout.write(
-            f"{entry.license}\t{entry.path.as_posix()}\t{entry.source_repository}\n"
-        )
+        sys.stdout.write(f"{entry.license}\t{entry.path.as_posix()}\t{entry.url}\n")
     return 0
 
 

@@ -15,28 +15,20 @@ if typing.TYPE_CHECKING:
 class CatalogEntry:
     """A single downloadable CMake file in the packaged catalog."""
 
-    id: str
     license: str
     path: PurePosixPath
     url: str
-    source_url: str
-    source_repository: str
     description: str
     sha256: str
-    size: int
 
     @classmethod
     def from_dict(cls, data: dict[str, object]) -> CatalogEntry:
         return cls(
-            id=_string_field(data, "id"),
             license=_string_field(data, "license"),
             path=PurePosixPath(_string_field(data, "path")),
             url=_string_field(data, "url"),
-            source_url=_string_field(data, "source_url"),
-            source_repository=_string_field(data, "source_repository"),
             description=_string_field(data, "description"),
             sha256=_string_field(data, "sha256"),
-            size=_int_field(data, "size"),
         )
 
 
