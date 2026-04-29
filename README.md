@@ -35,10 +35,11 @@
 catalog locally. Entries are grouped by license so a parser test suite can
 target only the files you want to consume.
 
-The starter catalog now includes 17 files across 4 license groups, with examples
-from projects such as Abseil, benchmark, Catch2, CLI11, doctest, fmt,
-googletest, magic_enum, nanobind, nlohmann/json, OpenTelemetry C++, protobuf,
-pybind11, pybind's `cmake_example`, range-v3, spdlog, and yaml-cpp.
+The starter catalog now includes 27 files across 4 license groups, with examples
+from projects such as Abseil, benchmark, Boost.JSON, Boost.Nowide, Catch2,
+CLI11, cereal, cxxopts, EnTT, FlatBuffers, folly, fmt, googletest, magic_enum,
+nanobind, nlohmann/json, OpenTelemetry C++, protobuf, pybind11, pybind's
+`cmake_example`, range-v3, spdlog, thrift, xtensor, xtl, and yaml-cpp.
 
 ## Catalog format
 

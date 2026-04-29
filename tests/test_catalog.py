@@ -15,7 +15,7 @@ def test_load_catalog() -> None:
     catalog = load_catalog()
 
     assert catalog.schema_version == 1
-    assert len(catalog.entries) == 17
+    assert len(catalog.entries) == 27
     assert catalog.licenses() == ("Apache-2.0", "BSD-3-Clause", "BSL-1.0", "MIT")
 
 
@@ -31,6 +31,8 @@ def test_catalog_filter_is_case_insensitive() -> None:
         "MIT/Neargye/magic_enum/CMakeLists.txt",
         "MIT/gabime/spdlog/CMakeLists.txt",
         "MIT/jbeder/yaml-cpp/CMakeLists.txt",
+        "MIT/jarro2783/cxxopts/CMakeLists.txt",
+        "MIT/skypjack/entt/CMakeLists.txt",
     ]
 
 

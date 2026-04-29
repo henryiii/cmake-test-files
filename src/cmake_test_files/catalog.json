@@ -30,6 +30,27 @@
       "sha256": "b1fa9ff7f3aa35655f1f341dd7f8ec10fd21d9993a49bd2ced149ecf9c43c025"
     },
     {
+      "license": "Apache-2.0",
+      "path": "Apache-2.0/google/flatbuffers/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/google/flatbuffers/bab10754d93d74d1ff44d46de63558bc4127f7d8/CMakeLists.txt",
+      "description": "Large serialization library configuration with language toggles, tests, benchmarks, and install packaging.",
+      "sha256": "92e3dea4bd8a021efccd42f16ac3b5224bbaf52d9f4cf9b4f584ad648187ab3f"
+    },
+    {
+      "license": "Apache-2.0",
+      "path": "Apache-2.0/apache/thrift/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/apache/thrift/d2acd3c49e5832cb0179f72b111c4ad5bd89c4c5/CMakeLists.txt",
+      "description": "Compact RPC library build with platform checks, dependency setup, and install-oriented options.",
+      "sha256": "d8c7d65ab4b1b6e97484b92f861bd319bb901d99cb81068503513a20a6236943"
+    },
+    {
+      "license": "Apache-2.0",
+      "path": "Apache-2.0/facebook/folly/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/facebook/folly/bdda5c1e3d960aab15c41fbd164be0446e1b7ba0/CMakeLists.txt",
+      "description": "Feature-heavy systems library configuration with dependency discovery, compiler tuning, and packaging hooks.",
+      "sha256": "cf3c771984e3d66cfd9bcd6800d00b62145ba7187e95e8ed7ae48f607b83e5ec"
+    },
+    {
       "license": "BSL-1.0",
       "path": "BSL-1.0/catchorg/Catch2/CMakeLists.txt",
       "url": "https://raw.githubusercontent.com/catchorg/Catch2/b670de4fe12ac7c5e858b7de3a14fb4bd18c760e/CMakeLists.txt",
@@ -42,6 +63,20 @@
       "url": "https://raw.githubusercontent.com/ericniebler/range-v3/21b70bee785cabd3ca5e3da173bf3bdbb9df1344/CMakeLists.txt",
       "description": "Header-only library setup with tests, docs, and conditional install behavior.",
       "sha256": "3bafdee484f99462badd2fb2dc9f1a19bfa649517270b6379357ffd6619fb907"
+    },
+    {
+      "license": "BSL-1.0",
+      "path": "BSL-1.0/boostorg/json/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/boostorg/json/a6e9c7b6c6568ee586629f1261e7202f308e82d8/CMakeLists.txt",
+      "description": "Boost library build with standalone and superproject modes, tests, examples, and install logic.",
+      "sha256": "9f32ec305ae42cc1efdad881ed0a1dc4b8935d93727e663a3104698472e67c0a"
+    },
+    {
+      "license": "BSL-1.0",
+      "path": "BSL-1.0/boostorg/nowide/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/boostorg/nowide/0d6782b941fffcaf193cfb3e5b0a6bf4b2eeee03/CMakeLists.txt",
+      "description": "Cross-platform Unicode wrapper configuration with examples, tests, and Boost-style packaging support.",
+      "sha256": "5bc1fee3cfbaa5b7f623dcfe5e4c91e3b50ba6df7cf1efbeab50ebc2763202ab"
     },
     {
       "license": "BSD-3-Clause",
@@ -77,6 +112,27 @@
       "url": "https://raw.githubusercontent.com/pybind/pybind11/ccb7129f54fcef8db14c7e662cec4ae98ad13541/CMakeLists.txt",
       "description": "Popular binding library configuration with helpers, tests, install rules, and compatibility logic.",
       "sha256": "0710a2aa117ffa4ad0f01693c8b75f696c23b0684b3d05072366b89c4927b085"
+    },
+    {
+      "license": "BSD-3-Clause",
+      "path": "BSD-3-Clause/USCiLab/cereal/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/USCiLab/cereal/22a1b369f39be918ca79206a83c4facd759f9105/CMakeLists.txt",
+      "description": "Header-focused serialization project with option-heavy examples, sandbox targets, and install exports.",
+      "sha256": "192fe9e821fdaf2879baa97c759f835d73140ed3a7fe4e183aeaac5d246bd3cc"
+    },
+    {
+      "license": "BSD-3-Clause",
+      "path": "BSD-3-Clause/xtensor-stack/xtensor/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/xtensor-stack/xtensor/61cebfe682cd0bf22eb92fc7553f079449cf7db5/CMakeLists.txt",
+      "description": "Numerical tensor library build with benchmarks, tests, docs, and feature-dependent packaging.",
+      "sha256": "1946cd1d6ba4df0a5c069c98e87cd069234ba6cb33ba2fea7b1001cde3f7efcc"
+    },
+    {
+      "license": "BSD-3-Clause",
+      "path": "BSD-3-Clause/xtensor-stack/xtl/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/xtensor-stack/xtl/c52350e283b98e5d69dbc50726925a1f8e16c57c/CMakeLists.txt",
+      "description": "Support library configuration with tests, examples, and lightweight install/export wiring.",
+      "sha256": "276730152647acaee90e1c5b543eb8f9ff22b990eb3a27653986c1827cbf2930"
     },
     {
       "license": "MIT",
@@ -119,6 +175,20 @@
       "url": "https://raw.githubusercontent.com/jbeder/yaml-cpp/1b60fae7c31e34380923fd0efb99b461114ddd3d/CMakeLists.txt",
       "description": "Mid-sized library configuration with strict flags, tests, tools, and install/export behavior.",
       "sha256": "ba47469fd332f396f85ec17e6513723a6237a10ac68114cde26935816dab64a7"
+    },
+    {
+      "license": "MIT",
+      "path": "MIT/jarro2783/cxxopts/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/jarro2783/cxxopts/11f26227ef8e951bdad48aeaa6537f1c5d8e9e0a/CMakeLists.txt",
+      "description": "Small command-line option parser build with docs, tests, packaging, and install helpers.",
+      "sha256": "df12665ce0cf35052057bbc54adf33db1896f8d59604ee1792ed021789bdbfb5"
+    },
+    {
+      "license": "MIT",
+      "path": "MIT/skypjack/entt/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/skypjack/entt/1333fa53129e7cfded5a9640c4336a254049917b/CMakeLists.txt",
+      "description": "Entity-component-system project configuration with benchmarks, tests, examples, and export logic.",
+      "sha256": "018b6e628a8ee3e3015f9e8310146c302914ea9def6396907ba18ac858d57587"
     }
   ]
 }
