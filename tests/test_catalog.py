@@ -14,7 +14,7 @@ from cmake_test_files.download import download_files
 def test_load_catalog() -> None:
     catalog = load_catalog()
 
-    assert catalog.schema_version == 2
+    assert catalog.schema_version == 3
     assert len(catalog.entries) == 33
     assert catalog.licenses() == (
         "Apache-2.0",
@@ -62,15 +62,15 @@ def test_load_catalog_structures_paths(
         tmp_path,
         monkeypatch,
         {
-            "schema_version": 2,
+            "schema_version": 3,
             "entries": [
                 {
                     "license": "MIT",
                     "description": "Example file",
+                    "commit_sha": "1234abcd",
                     "files": [
                         {
-                            "path": "MIT/example/CMakeLists.txt",
-                            "url": "https://example.invalid/CMakeLists.txt",
+                            "path": "MIT/example/project/CMakeLists.txt",
                             "sha256": "0" * 64,
                         }
                     ],
@@ -85,10 +85,10 @@ def test_load_catalog_structures_paths(
         CatalogEntry(
             license="MIT",
             description="Example file",
+            commit_sha="1234abcd",
             files=(
                 CatalogFile(
-                    path=PurePosixPath("MIT/example/CMakeLists.txt"),
-                    url="https://example.invalid/CMakeLists.txt",
+                    path=PurePosixPath("MIT/example/project/CMakeLists.txt"),
                     sha256="0" * 64,
                 ),
             ),
@@ -111,7 +111,7 @@ def test_load_catalog_rejects_non_array_entries(
     _patch_catalog_payload(
         tmp_path,
         monkeypatch,
-        {"schema_version": 2, "entries": {"license": "MIT"}},
+        {"schema_version": 3, "entries": {"license": "MIT"}},
     )
 
     with pytest.raises(TypeError, match="Catalog entries must be a JSON array"):
@@ -123,7 +123,7 @@ def test_load_catalog_rejects_non_array_entries(
     [
         {"schema_version": "1", "entries": []},
         {
-            "schema_version": 2,
+            "schema_version": 3,
             "entries": [
                 {
                     "license": 1,
@@ -133,7 +133,7 @@ def test_load_catalog_rejects_non_array_entries(
             ],
         },
         {
-            "schema_version": 2,
+            "schema_version": 3,
             "entries": [
                 {
                     "license": "MIT",
@@ -143,11 +143,23 @@ def test_load_catalog_rejects_non_array_entries(
             ],
         },
         {
-            "schema_version": 2,
+            "schema_version": 3,
             "entries": [
                 {
                     "license": "MIT",
                     "description": "Example file",
+                    "commit_sha": 1,
+                    "files": [],
+                }
+            ],
+        },
+        {
+            "schema_version": 3,
+            "entries": [
+                {
+                    "license": "MIT",
+                    "description": "Example file",
+                    "commit_sha": "1234abcd",
                     "files": {
                         "path": "MIT/example/CMakeLists.txt",
                     },
@@ -155,22 +167,22 @@ def test_load_catalog_rejects_non_array_entries(
             ],
         },
         {
-            "schema_version": 2,
+            "schema_version": 3,
             "entries": [
                 {
                     "license": "MIT",
                     "description": "Example file",
+                    "commit_sha": "1234abcd",
                     "files": [
                         {
                             "path": 1,
-                            "url": "https://example.invalid/CMakeLists.txt",
                             "sha256": "0" * 64,
                         }
                     ],
                 }
             ],
         },
-        {"schema_version": 2, "entries": [1]},
+        {"schema_version": 3, "entries": [1]},
     ],
 )
 def test_load_catalog_rejects_invalid_structure(
@@ -186,23 +198,26 @@ def test_download_files(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None
     entry = CatalogEntry(
         license="MIT",
         description="Example file",
+        commit_sha="1234abcd",
         files=(
             CatalogFile(
-                path=PurePosixPath("MIT/example/CMakeLists.txt"),
-                url="https://example.invalid/CMakeLists.txt",
+                path=PurePosixPath("MIT/example/project/CMakeLists.txt"),
                 sha256="022d843e9eb900dbf96b549eb873ca183d1a46c8f9e8b51e7b132df74b37b074",
             ),
             CatalogFile(
-                path=PurePosixPath("MIT/example/LICENSE"),
-                url="https://example.invalid/LICENSE",
+                path=PurePosixPath("MIT/example/project/LICENSE"),
                 sha256="267f7a2e19dfa9df99af774520985a0e521925293ea5b7e767ab06969d06bf91",
             ),
         ),
     )
-    catalog = Catalog(schema_version=2, entries=(entry,))
+    catalog = Catalog(schema_version=3, entries=(entry,))
     responses = {
-        "https://example.invalid/CMakeLists.txt": b"project(test)\n",
-        "https://example.invalid/LICENSE": b"MIT License\n",
+        "https://raw.githubusercontent.com/example/project/1234abcd/CMakeLists.txt": (
+            b"project(test)\n"
+        ),
+        "https://raw.githubusercontent.com/example/project/1234abcd/LICENSE": (
+            b"MIT License\n"
+        ),
     }
 
     def fake_urlopen(request: urllib.request.Request) -> BytesIO:
@@ -211,8 +226,8 @@ def test_download_files(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None
     monkeypatch.setattr(urllib.request, "urlopen", fake_urlopen)
 
     report = download_files(tmp_path, entries=catalog.entries)
-    cmake_path = tmp_path / "MIT" / "example" / "CMakeLists.txt"
-    license_path = tmp_path / "MIT" / "example" / "LICENSE"
+    cmake_path = tmp_path / "MIT" / "example" / "project" / "CMakeLists.txt"
+    license_path = tmp_path / "MIT" / "example" / "project" / "LICENSE"
 
     assert report.downloaded == (cmake_path, license_path)
     assert report.skipped == ()
@@ -228,10 +243,10 @@ def test_download_files_rejects_path_escape(tmp_path: Path) -> None:
     entry = CatalogEntry(
         license="MIT",
         description="Bad path",
+        commit_sha="1234abcd",
         files=(
             CatalogFile(
                 path=PurePosixPath("../escape.txt"),
-                url="https://example.invalid/escape.txt",
                 sha256="0" * 64,
             ),
         ),
@@ -239,6 +254,25 @@ def test_download_files_rejects_path_escape(tmp_path: Path) -> None:
 
     with pytest.raises(ValueError, match="stay within the destination"):
         download_files(tmp_path, entries=(entry,))
+
+
+def test_catalog_entry_url_for() -> None:
+    entry = CatalogEntry(
+        license="MIT",
+        description="Example file",
+        commit_sha="1234abcd",
+        files=(
+            CatalogFile(
+                path=PurePosixPath("MIT/example/project/cmake/CMakeLists.txt"),
+                sha256="0" * 64,
+            ),
+        ),
+    )
+
+    assert (
+        entry.url_for(entry.files[0])
+        == "https://raw.githubusercontent.com/example/project/1234abcd/cmake/CMakeLists.txt"
+    )
 
 
 def _patch_catalog_payload(

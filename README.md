@@ -30,20 +30,19 @@ schema:
 
 ```json
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "entries": [
     {
       "license": "MIT",
       "description": "Feature-rich top-level configuration for a header-only project.",
+      "commit_sha": "<commit>",
       "files": [
         {
           "path": "MIT/nlohmann/json/CMakeLists.txt",
-          "url": "https://raw.githubusercontent.com/owner/repo/<commit>/CMakeLists.txt",
           "sha256": "<sha256>"
         },
         {
           "path": "MIT/nlohmann/json/LICENSE.MIT",
-          "url": "https://raw.githubusercontent.com/owner/repo/<commit>/LICENSE.MIT",
           "sha256": "<sha256>"
         }
       ]
@@ -52,7 +51,8 @@ schema:
 }
 ```
 
-The downloader only requires each file's `path`, `url`, and `sha256`.
+The downloader derives each GitHub raw URL from the entry `commit_sha` and each
+file `path`, so the per-file schema only needs `path` and `sha256`.
 
 Install this from the github repo directly (it's mostly for using to set up
 tests).

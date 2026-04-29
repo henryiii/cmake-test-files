@@ -35,7 +35,7 @@ def download_files(
 
     downloaded: list[Path] = []
     skipped: list[Path] = []
-    for file in _iter_files(selected_entries):
+    for entry, file in _iter_files(selected_entries):
         relative_path = _safe_relative_path(file.path)
         output_path = target_root / relative_path
         output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -51,7 +51,7 @@ def download_files(
             )
             raise FileExistsError(msg)
 
-        data = _download_entry(file)
+        data = _download_entry(entry, file)
         _write_file(output_path, data)
         downloaded.append(output_path)
 
@@ -65,14 +65,17 @@ def _safe_relative_path(path: PurePosixPath) -> Path:
     return Path(*path.parts)
 
 
-def _iter_files(entries: Iterable[CatalogEntry]) -> Iterable[CatalogFile]:
+def _iter_files(
+    entries: Iterable[CatalogEntry],
+) -> Iterable[tuple[CatalogEntry, CatalogFile]]:
     for entry in entries:
-        yield from entry.files
+        for file in entry.files:
+            yield entry, file
 
 
-def _download_entry(entry: CatalogFile) -> bytes:
+def _download_entry(catalog_entry: CatalogEntry, entry: CatalogFile) -> bytes:
     request = urllib.request.Request(
-        entry.url,
+        catalog_entry.url_for(entry),
         headers={"User-Agent": "cmake-test-files/0.1.0"},
     )
     with urllib.request.urlopen(request) as response:

@@ -19,7 +19,6 @@ class CatalogFile:
     """A single downloadable file within a catalog entry."""
 
     path: PurePosixPath
-    url: str
     sha256: str
 
 
@@ -70,7 +69,23 @@ class CatalogEntry:
 
     license: str
     description: str
+    commit_sha: str
     files: tuple[CatalogFile, ...]
+
+    def url_for(self, file: CatalogFile) -> str:
+        if len(file.path.parts) < 4:
+            msg = (
+                f"Catalog path must include license, owner, repo, and file: {file.path}"
+            )
+            raise ValueError(msg)
+
+        owner = file.path.parts[1]
+        repo = file.path.parts[2]
+        source_path = PurePosixPath(*file.path.parts[3:]).as_posix()
+        return (
+            f"https://raw.githubusercontent.com/{owner}/{repo}/"
+            f"{self.commit_sha}/{source_path}"
+        )
 
 
 def load_catalog() -> Catalog:

@@ -77,10 +77,10 @@ def _run_list(catalog: Catalog, *, licenses: list[str] | None, as_json: bool) ->
             {
                 "license": entry.license,
                 "description": entry.description,
+                "commit_sha": entry.commit_sha,
                 "files": [
                     {
                         "path": file.path.as_posix(),
-                        "url": file.url,
                         "sha256": file.sha256,
                     }
                     for file in entry.files
