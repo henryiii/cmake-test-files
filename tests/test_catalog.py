@@ -239,6 +239,32 @@ def test_download_files(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None
     assert second_report.skipped == (cmake_path, license_path)
 
 
+def test_download_files_skips_crlf_converted_files(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Files with CRLF line endings (e.g., Windows git checkout) should be treated as matching."""
+    entry = CatalogEntry(
+        license="MIT",
+        description="Example file",
+        commit_sha="1234abcd",
+        files=(
+            CatalogFile(
+                path=PurePosixPath("MIT/example/project/CMakeLists.txt"),
+                sha256="022d843e9eb900dbf96b549eb873ca183d1a46c8f9e8b51e7b132df74b37b074",
+            ),
+        ),
+    )
+    cmake_path = tmp_path / "MIT" / "example" / "project" / "CMakeLists.txt"
+    cmake_path.parent.mkdir(parents=True)
+    cmake_path.write_bytes(b"project(test)\r\n")
+
+    monkeypatch.setattr(urllib.request, "urlopen", lambda _: BytesIO(b""))
+
+    report = download_files(tmp_path, entries=(entry,))
+    assert report.downloaded == ()
+    assert report.skipped == (cmake_path,)
+
+
 def test_download_files_rejects_path_escape(tmp_path: Path) -> None:
     entry = CatalogEntry(
         license="MIT",

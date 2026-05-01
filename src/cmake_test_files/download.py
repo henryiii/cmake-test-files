@@ -97,7 +97,11 @@ def _download_entry(catalog_entry: CatalogEntry, entry: CatalogFile) -> bytes:
 
 def _matches_existing_file(path: Path, entry: CatalogFile) -> bool:
     data = path.read_bytes()
-    return hashlib.sha256(data).hexdigest() == entry.sha256
+    if hashlib.sha256(data).hexdigest() == entry.sha256:
+        return True
+    # Also accept CRLF line endings (e.g., Windows git checkout with core.autocrlf)
+    normalized = data.replace(b"\r\n", b"\n")
+    return normalized != data and hashlib.sha256(normalized).hexdigest() == entry.sha256
 
 
 def _write_file(path: Path, data: bytes) -> None:
